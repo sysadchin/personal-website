@@ -46,7 +46,7 @@
 </em>Content is presented!</p>
 <h2>The code!</h2>
 <p>The runit service is nothing more than a for-loop. Here's the runit-invoked script. </p>
-<h1>!bash</h1>
+<p>:::bash</p>
 <h1>/tmp/gitsync.sh</h1>
 <p>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 while true; do 
@@ -55,8 +55,8 @@ while true; do
         sleep 5m
 done</p>
 <p>Installing the service is nothing more than this...</p>
-<h1>!bash</h1>
-<p>mkdir -p /etc/service/gitsync
+<p>:::bash
+mkdir -p /etc/service/gitsync
 echo -e '#!/bin/bash\n/tmp/gitsync.sh' &gt;&gt; /etc/service/gitsync/run
 chmod +x /etc/service/gitsync/run 
 sv up gitsync</p>
