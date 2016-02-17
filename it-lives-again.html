@@ -65,7 +65,20 @@ The Personal Website of Andrew Glenn            </a>
     </div>
 </div> <!-- /.navbar -->
 <!-- Banner -->
-<!-- End Banner -->
+<style>
+	#banner{
+	    background-image:url("./~/website/content/banner.jpg");
+	}
+</style>
+
+<div id="banner">
+	<div class="container">
+		<div class="copy">
+			<h1>The Personal Website of Andrew Glenn</h1>
+				<p class="intro">(${subtitle_text})</p>
+		</div>
+	</div>
+</div><!-- End Banner -->
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
@@ -113,11 +126,26 @@ The Personal Website of Andrew Glenn            </a>
 
 <section class="well well-sm">
     <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://github.com/sysadchin"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+              </ul>
+            </li>
 
 
 
             <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/blog.html">
+                            blog
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="./tag/infrastructure.html">
+                            infrastructure
+                        </a>
+                    </li>
                 </ul>
             </li>
     </ul>
@@ -146,6 +174,7 @@ The Personal Website of Andrew Glenn            </a>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
 <script src="./theme/js/respond.min.js"></script>
 
+    <script src="./theme/js/bodypadding.js"></script>
 
 </body>
 </html>
