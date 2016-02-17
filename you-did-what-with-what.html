@@ -3,7 +3,11 @@
 <head>
         <meta charset="utf-8" />
         <title>You did what?! With WHAT?!</title>
+<<<<<<< HEAD
         <link rel="stylesheet" href="http://www.andrewglenn.net/theme/css/main.css" />
+=======
+        <link rel="stylesheet" href="./theme/css/main.css" />
+>>>>>>> ec131cc6c78011cc4c323bed9711d1c107f8493c
 
         <!--[if IE]>
             <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,16 +16,26 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
+<<<<<<< HEAD
                 <h1><a href="http://www.andrewglenn.net/">The Personal Website of Andrew Glenn </a></h1>
                 <nav><ul>
                     <li class="active"><a href="http://www.andrewglenn.net/category/server-stuff.html">Server Stuff</a></li>
+=======
+                <h1><a href="./">The Personal Website of Andrew Glenn </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="./category/server-stuff.html">Server Stuff</a></li>
+>>>>>>> ec131cc6c78011cc4c323bed9711d1c107f8493c
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
   <article>
     <header>
       <h1 class="entry-title">
+<<<<<<< HEAD
         <a href="http://www.andrewglenn.net/you-did-what-with-what.html" rel="bookmark"
+=======
+        <a href="./you-did-what-with-what.html" rel="bookmark"
+>>>>>>> ec131cc6c78011cc4c323bed9711d1c107f8493c
            title="Permalink to You did what?! With WHAT?!">You did what?! With WHAT?!</a></h1>
     </header>
 
@@ -36,10 +50,17 @@
         </abbr>
 
         <address class="vcard author">
+<<<<<<< HEAD
                 By                         <a class="url fn" href="http://www.andrewglenn.net/author/andrew-glenn.html">Andrew Glenn</a>
         </address>
 <p>In <a href="http://www.andrewglenn.net/category/server-stuff.html">Server Stuff</a>.</p>
 <p>tags: <a href="http://www.andrewglenn.net/tag/blog.html">blog</a> <a href="http://www.andrewglenn.net/tag/infrastructure.html">infrastructure</a> </p>
+=======
+                By                         <a class="url fn" href="./author/andrew-glenn.html">Andrew Glenn</a>
+        </address>
+<p>In <a href="./category/server-stuff.html">Server Stuff</a>.</p>
+<p>tags: <a href="./tag/blog.html">blog</a> <a href="./tag/infrastructure.html">infrastructure</a> </p>
+>>>>>>> ec131cc6c78011cc4c323bed9711d1c107f8493c
 </footer><!-- /.post-info -->      <p>The primary reason this domain was empty for quite some time was due to hardware failure. I've been workingto bring the hardware back online. In the interim, though, I've asked friends to help me out. </p>
 <p>As a result, I'm trying to be A Nice Guy'&#174;'. I've decided to create a static HTML site for my content. Although, I've been using static HTML for several years now, in one form or another. </p>
 <h2>The Implementation</h2>
@@ -51,6 +72,7 @@
 </em>Content is presented!</p>
 <h2>The code!</h2>
 <p>The runit service is nothing more than a for-loop. Here's the runit-invoked script. </p>
+<<<<<<< HEAD
 <h1>!bash</h1>
 <h1>/tmp/gitsync.sh</h1>
 <p>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -65,6 +87,26 @@ done</p>
 echo -e '#!/bin/bash\n/tmp/gitsync.sh' &gt;&gt; /etc/service/gitsync/run
 chmod +x /etc/service/gitsync/run 
 sv up gitsync</p>
+=======
+<div class="codehilite"><pre><span></span><span class="c1">#/tmp/gitsync.sh</span>
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+<span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> 
+    <span class="nb">cd</span> /var/www/vhosts/andrewglenn.net/
+    git pull origin
+    sleep 5m
+<span class="k">done</span>
+</pre></div>
+
+
+<p>Installing the service is nothing more than this...</p>
+<div class="codehilite"><pre><span></span>mkdir -p /etc/service/gitsync
+<span class="nb">echo</span> -e <span class="s1">&#39;#!/bin/bash\n/tmp/gitsync.sh&#39;</span> &gt;&gt; /etc/service/gitsync/run
+chmod +x /etc/service/gitsync/run 
+sv up gitsync
+</pre></div>
+
+
+>>>>>>> ec131cc6c78011cc4c323bed9711d1c107f8493c
 <p>...and bam! Sync'd content!</p>
 <p>// -AG</p>
     </div><!-- /.entry-content -->
