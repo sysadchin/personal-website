@@ -1,50 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+>
 <head>
-        <meta charset="utf-8" />
-        <title>You did what?! With WHAT?!</title>
-        <link rel="stylesheet" href="./theme/css/main.css" />
+    <title>You did what?! With WHAT?! - The Personal Website of Andrew Glenn</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+
+
+<link rel="canonical" href="./you-did-what-with-what.html">
+
+        <meta name="author" content="Andrew Glenn" />
+        <meta name="keywords" content="blog,infrastructure" />
+        <meta name="description" content="This post describes how I&#39;m publishing and sync&#39;ing content to the webserver that powers the site." />
+
+        <meta property="og:site_name" content="The Personal Website of Andrew Glenn" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="You did what?! With WHAT?!"/>
+        <meta property="og:url" content="./you-did-what-with-what.html"/>
+        <meta property="og:description" content="This post describes how I&#39;m publishing and sync&#39;ing content to the webserver that powers the site."/>
+        <meta property="article:published_time" content="2016-02-17" />
+            <meta property="article:section" content="Server Stuff" />
+            <meta property="article:tag" content="blog" />
+            <meta property="article:tag" content="infrastructure" />
+            <meta property="article:author" content="Andrew Glenn" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+
+
 </head>
+<body>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="./">The Personal Website of Andrew Glenn </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="./category/server-stuff.html">Server Stuff</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="./you-did-what-with-what.html" rel="bookmark"
-           title="Permalink to You did what?! With WHAT?!">You did what?! With WHAT?!</a></h1>
-    </header>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+The Personal Website of Andrew Glenn            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="./category/server-stuff.html">Server stuff</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
 
-    <div class="entry-content">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./you-did-what-with-what.html"
+                       rel="bookmark"
+                       title="Permalink to You did what?! With WHAT?!">
+                        You did what?! With WHAT?!
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
 <footer class="post-info">
-        <abbr class="published" title="2016-02-17T12:00:00-06:00">
-                Published: Wed 17 February 2016
-        </abbr>
-		<br />
-        <abbr class="modified" title="2016-02-17T12:00:00-06:00">
-                Updated: Wed 17 February 2016
-        </abbr>
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-02-17T12:00:00-06:00"> Wed 17 February 2016</time>
+    </span>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="./author/andrew-glenn.html">Andrew Glenn</a>
-        </address>
-<p>In <a href="./category/server-stuff.html">Server Stuff</a>.</p>
-<p>tags: <a href="./tag/blog.html">blog</a> <a href="./tag/infrastructure.html">infrastructure</a> </p>
-</footer><!-- /.post-info -->      <p>The primary reason this domain was empty for quite some time was due to hardware failure. I've been workingto bring the hardware back online. In the interim, though, I've asked friends to help me out. </p>
-<p>As a result, I'm trying to be A Nice Guy'&#174;'. I've decided to create a static HTML site for my content. Although, I've been using static HTML for several years now, in one form or another. </p>
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/blog.html">blog</a>
+        /
+	<a href="./tag/infrastructure.html">infrastructure</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>The primary reason this domain was empty for quite some time was due to hardware failure. I've been workingto bring the hardware back online. In the interim, though, I've asked friends to help me out. </p>
+<p>As a result, I'm trying to be A Nice Guy&trade;. I've decided to create a static HTML site for my content. Although, I've been using static HTML for several years now, in one form or another. </p>
 <h2>The Implementation</h2>
 <p>I've decided on <a href="http://docs.getpelican.com/en/3.6.3/">pelican</a> as a framework. It's very nice and processes things the way I'd expect. With that said though, I still ran into an issue with updating the site. I really don't want to remotely access the server every time I want to publish new content. </p>
-<p>So.. what do I do? I apply liberal amount of DevOps'&174;', of course! Here's how content gets from me to you:</p>
+<p>So.. what do I do? I apply liberal amount of DevOps&trade;, of course! Here's how content gets from me to you:</p>
 <p><em>I create a post in markdown format and have pelican generate the appropraite HTML
 </em>I push the content to <a href="https://github.com/sysadchin/personal-website">this github repository</a>. 
 <em>A <a href="http://smarden.org/runit/">runit service</a> checks the github repository and pulls down any changes. 
@@ -71,20 +130,51 @@ sv up gitsync
 
 <p>...and bam! Sync'd content!</p>
 <p>// -AG</p>
-    </div><!-- /.entry-content -->
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
-  </article>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+
+
+
+            <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                </ul>
+            </li>
+    </ul>
 </section>
-        <section id="extras" class="body">
-        </section><!-- /#extras -->
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2016 Andrew Glenn
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
+
+    <script src="./theme/js/bodypadding.js"></script>
 
 </body>
 </html>
