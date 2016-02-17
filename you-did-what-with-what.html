@@ -51,20 +51,25 @@
 </em>Content is presented!</p>
 <h2>The code!</h2>
 <p>The runit service is nothing more than a for-loop. Here's the runit-invoked script. </p>
-<p>:::bash</p>
-<h1>/tmp/gitsync.sh</h1>
-<p>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-while true; do 
-        cd /var/www/vhosts/andrewglenn.net/
-        git pull origin
+<div class="codehilite"><pre><span></span><span class="c1">#/tmp/gitsync.sh</span>
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+<span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> 
+    <span class="nb">cd</span> /var/www/vhosts/andrewglenn.net/
+    git pull origin
         sleep 5m
-done</p>
+<span class="k">done</span>
+</pre></div>
+
+
 <p>Installing the service is nothing more than this...</p>
-<p>:::bash
-mkdir -p /etc/service/gitsync
-echo -e '#!/bin/bash\n/tmp/gitsync.sh' &gt;&gt; /etc/service/gitsync/run
-chmod +x /etc/service/gitsync/run 
-sv up gitsync</p>
+<div class="codehilite"><pre><span></span> :::bash
+ mkdir -p /etc/service/gitsync
+ echo -e &#39;#!/bin/bash\n/tmp/gitsync.sh&#39; &gt;&gt; /etc/service/gitsync/run
+ chmod +x /etc/service/gitsync/run 
+ sv up gitsync
+</pre></div>
+
+
 <p>...and bam! Sync'd content!</p>
 <p>// -AG</p>
     </div><!-- /.entry-content -->
