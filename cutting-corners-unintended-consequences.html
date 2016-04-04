@@ -2,7 +2,7 @@
 <html lang="en"
 >
 <head>
-    <title>It lives again! - #./AG</title>
+    <title>Cutting Corners & Unintended Consequences - #./AG</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,21 +10,20 @@
 
 
 
-<link rel="canonical" href="./it-lives-again.html">
+<link rel="canonical" href="./cutting-corners-unintended-consequences.html">
 
         <meta name="author" content="Andrew Glenn" />
-        <meta name="keywords" content="blog,infrastructure" />
-        <meta name="description" content="The blog is back! I discuss furture plans around the site." />
+        <meta name="keywords" content="blog" />
+        <meta name="description" content="In this post, I outline a SNAFU that I encountered recently, and why cutting corners hurts everyone." />
 
         <meta property="og:site_name" content="#./AG" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="It lives again!"/>
-        <meta property="og:url" content="./it-lives-again.html"/>
-        <meta property="og:description" content="The blog is back! I discuss furture plans around the site."/>
-        <meta property="article:published_time" content="2016-02-17" />
-            <meta property="article:section" content="Server Stuff" />
+        <meta property="og:title" content="Cutting Corners &amp; Unintended Consequences"/>
+        <meta property="og:url" content="./cutting-corners-unintended-consequences.html"/>
+        <meta property="og:description" content="In this post, I outline a SNAFU that I encountered recently, and why cutting corners hurts everyone."/>
+        <meta property="article:published_time" content="2016-04-04" />
+            <meta property="article:section" content="Ramblings" />
             <meta property="article:tag" content="blog" />
-            <meta property="article:tag" content="infrastructure" />
             <meta property="article:author" content="Andrew Glenn" />
 
 
@@ -56,10 +55,10 @@
                         <li >
                             <a href="./category/code.html">Code</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="./category/ramblings.html">Ramblings</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="./category/server-stuff.html">Server stuff</a>
                         </li>
             </ul>
@@ -92,10 +91,10 @@
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="./it-lives-again.html"
+                    <a href="./cutting-corners-unintended-consequences.html"
                        rel="bookmark"
-                       title="Permalink to It lives again!">
-                        It lives again!
+                       title="Permalink to Cutting Corners & Unintended Consequences">
+                        Cutting Corners & Unintended Consequences
                     </a>
                 </h1>
             </header>
@@ -105,20 +104,38 @@
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2016-02-17T10:30:00-06:00"> Wed 17 February 2016</time>
+        <i class="fa fa-calendar"></i><time datetime="2016-04-04T03:15:00-05:00"> Mon 04 April 2016</time>
     </span>
 
 
 
 <span class="label label-default">Tags</span>
 	<a href="./tag/blog.html">blog</a>
-        /
-	<a href="./tag/infrastructure.html">infrastructure</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>We're back! After a long hiatius, I've brought the website back online. I'm running pelican, the HTML generator for static sites. Content is pushed to my <a href="https://github.com/sysadchin/personal-website/">github repository for the content of this blog</a></p>
-<p>I have plans for the site, so stay tuned!</p>
+                <p>I recently found myself creating a shell script to perform actions once a DHCP lease was obtained. This was being done in an Ubuntu environment. I come from a redhat / centos background, so I normally use /bin/sh as my default interpreter. Bad idea. </p>
+<h2>Fast forward to present day.</h2>
+<p>As a bit of background information, DHCP leases in Linux distrobutions are commonly handled via a dhclient wrapper. This wrapper does a few things, including obtaining a DHCP lease from the DHCP server. Once the lease is obtained, the wrapper will iterate through any scripts in /etc/dhclient/dhclient-exit-hooks.d directory and <em>SOURCE</em> them, to preserve environment variables. </p>
+<p>This is where the fun starts. </p>
+<p>When a script is <em>SOURCED</em> in Linux, all environment variables, including the interpreter are retained. If I start a script with bash, and source "test.sh" to inherit certain variables, those variables are placed into my bash environment. This rule applies regardless of the interpreter involved.</p>
+<p>The dhclient-wrapper script specifies /bin/sh as the interpreter of choice. This is normally not a problem. However, many years back, the folks in debian/ubuntu decided to switch to /bin/dash as the default shell in releases moving forward. As I didn't work with Debian or Ubuntu on a daily basis, this change passed me by unnoticed.</p>
+<p>Dash is a stripped down version of bash, designed to be POSIX compliant. This sounds wonderful in theory, but in practice it means that some of the common features in bash that I take for granted were not there. See: the "let" builtin binary, arrays, and so forth. </p>
+<p>Now, the script that I was working with? The cirucmstances surrounding it prevent me from modifying it much. With that said, even if they did, rewriting it to get around the lack of array support? Yeah, not going to happen. </p>
+<p>So what was my solution? I wrote a wrapper to pass the needed environment variables to a bash (not dash) environment and executed my script as normal. </p>
+<h2>What about those corners cut?</h2>
+<p>Rather than go through each individual script and change the interpreter from /bin/sh to /bin/dash, the powers that be in debian/ubuntu decided they'd change the symbolic link that /bin/sh pointed to. Their justification for doing it in this manner pointed out the admistrative overhead that they'd incur in modifying each individual script.</p>
+<div class="codehilite"><pre><span></span>&quot;Rather than change each of them individually to run explicitly under /bin/dash, a change which would require significant ongoing maintenance and which would be liable to regress if not paid close attention, the Ubuntu core development team felt that it was best simply to change the default shell.&quot;
+
+&quot;The Debian policy manual has long mandated that &quot;shell scripts specifying &#39;/bin/sh&#39; as interpreter must only use POSIX features&quot;; in fact, this requirement has been in place since well before the inception of the Ubuntu project. Furthermore, any shell scripts that expected to be portable to other Unix systems, such as the BSDs or Solaris, already honoured this requirement. Thus, we felt that the compatibility impact of this change would be minimal. &quot;
+</pre></div>
+
+
+<p>I disagree. </p>
+<p>In my opinion, the proper approach here is to provide an option to the system administrator performing the installation. This way, those that want to retain bash get to retain bash. Those that want the speed and efficency that dash purportedly offers can have that too, along with the consequences of such actions. </p>
+<p>Furthermore, adjusting the default shell as they did, the Ubuntu and Debian developers have taken the easy way around the pro blem and subjected their userbase to undue pain and frustration. </p>
+<p>You can read the official Ubuntu documentation on the subject here:</p>
+<p>https://wiki.ubuntu.com/DashAsBinSh</p>
 <p>// -AG</p>
             </div>
             <!-- /.entry-content -->
