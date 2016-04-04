@@ -125,9 +125,17 @@
 <p>So what was my solution? I wrote a wrapper to pass the needed environment variables to a bash (not dash) environment and executed my script as normal. </p>
 <h2>What about those corners cut?</h2>
 <p>Rather than go through each individual script and change the interpreter from /bin/sh to /bin/dash, the powers that be in debian/ubuntu decided they'd change the symbolic link that /bin/sh pointed to. Their justification for doing it in this manner pointed out the admistrative overhead that they'd incur in modifying each individual script.</p>
-<div class="codehilite"><pre><span></span>&quot;Rather than change each of them individually to run explicitly under /bin/dash, a change which would require significant ongoing maintenance and which would be liable to regress if not paid close attention, the Ubuntu core development team felt that it was best simply to change the default shell.&quot;
+<div class="codehilite"><pre><span></span>&quot;Rather than change each of them individually to run explicitly under /bin/dash, 
+a change which would require significant ongoing maintenance and which would be 
+liable to regress if not paid close attention, the Ubuntu core development team 
+felt that it was best simply to change the default shell.&quot;
 
-&quot;The Debian policy manual has long mandated that &quot;shell scripts specifying &#39;/bin/sh&#39; as interpreter must only use POSIX features&quot;; in fact, this requirement has been in place since well before the inception of the Ubuntu project. Furthermore, any shell scripts that expected to be portable to other Unix systems, such as the BSDs or Solaris, already honoured this requirement. Thus, we felt that the compatibility impact of this change would be minimal. &quot;
+&quot;The Debian policy manual has long mandated that &quot;shell scripts specifying &#39;/bin/sh&#39; 
+as interpreter must only use POSIX features&quot;; in fact, this requirement has been in 
+place since well before the inception of the Ubuntu project. Furthermore, any shell 
+scripts that expected to be portable to other Unix systems, such as the BSDs or Solaris, 
+already honoured this requirement. Thus, we felt that the compatibility impact of this 
+change would be minimal. &quot;
 </pre></div>
 
 
